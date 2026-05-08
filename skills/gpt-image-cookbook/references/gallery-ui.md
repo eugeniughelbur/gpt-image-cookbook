@@ -2,13 +2,34 @@
 
 App screens, dashboards, settings UI, web layouts.
 
-> This gallery is empty in v0.1. Add your first prompts as you build them.
+See `gallery-posters.md` for the entry template.
 
-See `gallery-posters.md` for the entry template — same shape used here.
+---
 
-## How to seed this file
+## Mobile onboarding screen — dark mode
 
-1. Generate something you like via `gic`.
-2. Save the prompt + preview thumbnail under `docs/ui/`.
-3. Add an entry using the template from `gallery-posters.md`.
-4. Ship.
+**Provider**: openai · **Model**: gpt-image-2 · **Quality**: low · **Size**: portrait
+
+**Prompt**:
+```
+iOS mobile app onboarding screen, dark mode, centered illustration of a paper airplane, headline reads exactly 'Welcome to Cooper', single primary CTA button at bottom reads exactly 'Get started', secondary text-link below reads exactly 'I already have an account'. Minimalist, generous spacing, system sans-serif.
+```
+
+**Notes**: Pinning every label in quotes is the trick — without it the model invents copy. State the platform ("iOS") explicitly so the chrome looks right.
+
+**Preview**: `docs/ui/ui-01-onboarding-dark.png`
+
+---
+
+## SaaS analytics dashboard — light mode
+
+**Provider**: openai · **Model**: gpt-image-2 · **Quality**: low · **Size**: landscape
+
+**Prompt**:
+```
+SaaS analytics dashboard, web app, light mode, three-column layout. Left sidebar with 6 nav items: 'Home', 'Reports', 'Customers', 'Billing', 'Team', 'Settings'. Main panel: large line chart titled exactly 'Revenue, last 30 days', two stat cards above showing 'MRR $42,180' and 'Churn 2.4%'. Top bar with search field and avatar circle right-aligned. Refined design system look.
+```
+
+**Notes**: Listing every nav item by literal name keeps the model from inventing labels. Specify the chart type and what it shows — "line chart titled 'Revenue'" beats "a chart showing growth."
+
+**Preview**: `docs/ui/ui-02-saas-dashboard-light.png`
