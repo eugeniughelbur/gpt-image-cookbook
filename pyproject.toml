@@ -53,3 +53,27 @@ gic = "gic.cli:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/gic"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+  "src/gic/**/*.py",
+  "skills/**/*",
+  "README.md",
+  "LICENSE",
+  "pyproject.toml",
+  "CITATION.cff",
+  "llms.txt",
+]
+exclude = [
+  "docs/**",
+  ".venv*/**",
+  ".git/**",
+  ".github/**",
+  ".claude/**",
+  "**/__pycache__/**",
+  "**/*.pyc",
+  "generated/**",
+  "dist/**",
+  "build/**",
+  "*.egg-info/**",
+]
