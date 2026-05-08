@@ -1,6 +1,10 @@
+<p align="center">
+  <a href="https://github.com/eugeniughelbur/gpt-image-cookbook"><img src="docs/assets/banner.png" alt="gpt-image-cookbook — AI image recipes for OpenAI, Imagen, Flux" width="100%"/></a>
+</p>
+
 <h1 align="center">gpt-image-cookbook</h1>
 
-<p align="center"><em>Multi-provider AI image generation cookbook — prompt gallery, agentic skill, and CLI for OpenAI, Google Imagen, Flux, and more.</em></p>
+<p align="center"><em>Multi-provider AI image generation cookbook — prompt gallery, agentic skill, and CLI for OpenAI gpt-image-2, Google Imagen, Flux, and more.</em></p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License: MIT"/>
