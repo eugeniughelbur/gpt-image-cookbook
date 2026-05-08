@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://github.com/eugeniughelbur/gpt-image-cookbook"><img src="docs/assets/banner.png" alt="gpt-image-cookbook — AI image recipes for OpenAI, Imagen, Flux" width="100%"/></a>
+  <a href="https://github.com/eugeniughelbur/gpt-image-cookbook"><img src="docs/assets/hero.png" alt="gpt-image-cookbook — AI image recipes for OpenAI, Imagen, Flux" width="100%"/></a>
 </p>
 
 <h1 align="center">gpt-image-cookbook</h1>
