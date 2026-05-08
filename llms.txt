@@ -1,0 +1,47 @@
+# gpt-image-cookbook
+
+> A multi-provider AI image generation cookbook bundling a curated prompt gallery, an agentic skill (`SKILL.md`), and a Python CLI (`gic`) into one repository. Supports OpenAI gpt-image-2, Google Imagen, and Flux (fal.ai / Replicate) under a unified interface for text-to-image, reference-image edits, inpainting, and multi-reference workflows.
+
+## Repository
+
+- **Name**: gpt-image-cookbook
+- **Owner**: Eugeniu Ghelbur ([@eugeniughelbur](https://github.com/eugeniughelbur))
+- **License**: MIT
+- **Language**: Python (≥3.11)
+- **CLI binary**: `gic`
+- **Repository URL**: https://github.com/eugeniughelbur/gpt-image-cookbook
+
+## What this provides
+
+1. **Prompt gallery** — copy-paste prompts organized by category (posters, UI mockups, photography, diagrams, illustration, brand systems, edit/inpaint workflows). Each entry documents provider, model, quality, size, and the exact prompt.
+2. **Agent skill** — `skills/gpt-image-cookbook/SKILL.md` is a runbook for Claude Code, Codex, OpenClaw, Hermes, and other skill-capable agent runtimes. It tells the agent how to classify the request, search the gallery, refine the prompt, and call `gic`.
+3. **CLI (`gic`)** — one command, multi-provider. Switch providers with `--provider {openai,imagen,flux}`. Reads keys from process env, then `./.env`, then `~/.env`.
+
+## Provider support matrix
+
+| Provider | Models | Status |
+|---|---|---|
+| OpenAI | gpt-image-2 | implemented (text-to-image, edits, inpaint, multi-reference) |
+| Google | imagen-4, imagen-4-fast | stub — interface defined, implementation pending |
+| Flux | flux-pro-1.1, flux-schnell | stub — interface defined, implementation pending |
+
+## Installation
+
+```bash
+pip install gpt-image-cookbook        # PyPI (planned)
+uvx --from git+https://github.com/eugeniughelbur/gpt-image-cookbook gic --help   # one-shot
+```
+
+## Claude Code plugin
+
+Installable via `/plugin install eugeniughelbur/gpt-image-cookbook`. The plugin loads `skills/gpt-image-cookbook/SKILL.md` and resolves `gic` automatically.
+
+## Key files for LLMs and agents
+
+- [README.md](https://github.com/eugeniughelbur/gpt-image-cookbook/blob/main/README.md): user-facing docs
+- [skills/gpt-image-cookbook/SKILL.md](https://github.com/eugeniughelbur/gpt-image-cookbook/blob/main/skills/gpt-image-cookbook/SKILL.md): agent runbook
+- [skills/gpt-image-cookbook/references/gallery.md](https://github.com/eugeniughelbur/gpt-image-cookbook/blob/main/skills/gpt-image-cookbook/references/gallery.md): gallery routing index
+- [skills/gpt-image-cookbook/references/craft.md](https://github.com/eugeniughelbur/gpt-image-cookbook/blob/main/skills/gpt-image-cookbook/references/craft.md): prompt-craft cheatsheet
+- [skills/gpt-image-cookbook/references/providers.md](https://github.com/eugeniughelbur/gpt-image-cookbook/blob/main/skills/gpt-image-cookbook/references/providers.md): per-provider semantics + capability matrix
+- [src/gic/cli.py](https://github.com/eugeniughelbur/gpt-image-cookbook/blob/main/src/gic/cli.py): CLI entry point
+- [src/gic/providers/](https://github.com/eugeniughelbur/gpt-image-cookbook/blob/main/src/gic/providers/): provider abstraction + implementations

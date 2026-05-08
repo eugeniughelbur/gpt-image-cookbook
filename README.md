@@ -14,11 +14,17 @@
 
 ---
 
+**gpt-image-cookbook** is an open-source multi-provider AI image generation toolkit that bundles a curated prompt gallery, an agentic skill (`SKILL.md` runbook for Claude Code, Codex, OpenClaw, and Hermes), and a Python CLI (`gic`) into one repository. It supports **OpenAI gpt-image-2**, **Google Imagen**, and **Flux** (fal.ai / Replicate) under a single interface for text-to-image generation, reference-image editing, inpainting, and multi-reference workflows.
+
+If you build with AI image models, this gives you copy-paste prompts that work, a CLI that handles auth and edits, and an agent runbook that wires it all together.
+
+---
+
 ## What this is
 
 Three things bundled together:
 
-1. **A curated prompt gallery** — copy-paste prompts organized by category (posters, UI mockups, photography, diagrams, etc.) that produce reliable results across providers.
+1. **A curated prompt gallery** — copy-paste prompts organized by category (posters, UI mockups, photography, diagrams, brand systems, edit/inpaint workflows) that produce reliable results across providers.
 2. **An agentic skill** — `SKILL.md` runbook for Claude Code, Codex, OpenClaw, Hermes, and other skill-capable agent runtimes. Tells the agent how to search the gallery, refine the prompt, and call the CLI without writing one-off scripts.
 3. **A CLI (`gic`)** — one command, multiple providers. Switch between OpenAI `gpt-image-2`, Google Imagen, and Flux with a single `--provider` flag.
 
@@ -141,9 +147,57 @@ The provider abstraction lives in `src/gic/providers/`. Each provider implements
 
 ---
 
+## FAQ
+
+### What is gpt-image-cookbook?
+
+gpt-image-cookbook is an open-source toolkit for AI image generation that bundles three things in one repository: a curated **prompt gallery** (copy-paste prompts that work), an **agentic skill** (`SKILL.md` runbook for Claude Code, Codex, OpenClaw, and Hermes agent runtimes), and a **Python CLI** (`gic`) wrapping OpenAI gpt-image-2, Google Imagen, and Flux under one interface.
+
+### Which AI image models does it support?
+
+OpenAI **gpt-image-2** is fully implemented for text-to-image, reference-image edits, inpainting (with PNG alpha mask), and multi-reference workflows. **Google Imagen** (imagen-4) and **Flux** (flux-pro-1.1, flux-schnell via fal.ai or Replicate) have provider stubs ready — the abstraction is in place, implementations land progressively.
+
+### How do I install it?
+
+The fastest one-shot path is `uvx --from git+https://github.com/eugeniughelbur/gpt-image-cookbook gic --help`. For repeated use, clone the repo and `pip install -e ".[openai]"`. A PyPI release (`pip install gpt-image-cookbook`) is planned.
+
+### How do I use it as a Claude Code plugin?
+
+Run `/plugin install eugeniughelbur/gpt-image-cookbook` inside Claude Code. The plugin loads the agent skill at `skills/gpt-image-cookbook/SKILL.md` and resolves the `gic` CLI automatically. The agent then follows the operating loop documented in SKILL.md (classify → search gallery → refine → generate).
+
+### What's the difference between this and just calling the OpenAI API directly?
+
+Three things you don't get from the raw API: a **gallery of working prompts** organized by category, a **multi-provider abstraction** so you can switch between OpenAI / Imagen / Flux without rewriting code, and an **agent runbook** that lets a Claude Code or Codex agent use the gallery + CLI without you writing one-off scripts.
+
+### Does it cost money to use?
+
+Yes — calls go to OpenAI / Google / fal.ai / Replicate and bill the user's account. The CLI itself is free and open-source (MIT). The cookbook recommends drafting at `--quality low` first (~$0.01 per image on gpt-image-2) and only moving to `--quality high` (~$0.17 per image) when the prompt is locked.
+
+### Where are prompt API keys stored?
+
+The CLI reads keys from process environment first, then `./.env` in the project, then `~/.env` in the user's home directory — never overriding values already in env. Keys are never written to disk by the tool and never printed in output.
+
+### Can I add my own prompts to the gallery?
+
+Yes — that's the point. Each category has a `gallery-<category>.md` file with an entry template. Generate something via `gic`, save the preview to `docs/<category>/`, paste an entry, open a PR.
+
+### How do I add a new image provider?
+
+Implement `Provider.generate(req: GenerateRequest)` in a new file under `src/gic/providers/` and register it in `providers/__init__.py`. The OpenAI implementation in `openai_provider.py` is the reference shape.
+
+---
+
 ## License
 
 MIT — see [LICENSE](LICENSE).
+
+---
+
+## Citation
+
+If you use this cookbook in research or tooling, please cite via [CITATION.cff](CITATION.cff) or:
+
+> Ghelbur, E. (2026). *gpt-image-cookbook: a multi-provider AI image generation cookbook with prompt gallery, agentic skill, and CLI* [Software]. https://github.com/eugeniughelbur/gpt-image-cookbook
 
 ---
 

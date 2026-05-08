@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+title: gpt-image-cookbook
+message: "If you use this cookbook in research or tooling, please cite it."
+type: software
+authors:
+  - family-names: Ghelbur
+    given-names: Eugeniu
+    alias: eugeniughelbur
+repository-code: "https://github.com/eugeniughelbur/gpt-image-cookbook"
+url: "https://github.com/eugeniughelbur/gpt-image-cookbook"
+abstract: >
+  A multi-provider AI image generation cookbook bundling a curated prompt
+  gallery, an agentic skill runbook (Claude Code / Codex / OpenClaw / Hermes),
+  and a Python CLI (`gic`) wrapping OpenAI gpt-image-2, Google Imagen, and
+  Flux under a unified interface for text-to-image, reference-image edits,
+  inpainting, and multi-reference workflows.
+keywords:
+  - image-generation
+  - text-to-image
+  - openai
+  - gpt-image-2
+  - imagen
+  - flux
+  - prompt-engineering
+  - prompt-library
+  - agent-skill
+  - claude-code-plugin
+license: MIT
+version: 0.1.0
