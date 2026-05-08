@@ -17,3 +17,5 @@ venv/
 *.swp
 generated/
 out/
+.claude/
+
