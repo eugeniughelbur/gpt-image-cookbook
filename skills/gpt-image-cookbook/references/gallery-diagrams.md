@@ -17,7 +17,9 @@ Educational textbook-style diagram, anatomy of a coffee bean cross-section, labe
 
 **Notes**: Quote every label literally — paraphrasing produces fictional anatomy. State leader-line direction with words like "thin" so they don't dominate the figure. For dense diagrams, bump to `--quality high`.
 
-**Preview**: `docs/diagrams/diagram-01-coffee-bean.png`
+**Preview**:
+
+<img src="../../../docs/diagrams/diagram-01-coffee-bean.png" width="480" alt="diagram-01-coffee-bean"/>
 
 ---
 
@@ -32,4 +34,6 @@ Three-tier web application architecture diagram, three rounded rectangles arrang
 
 **Notes**: Architecture diagrams need shape *count*, *position*, and *arrow direction* spelled out. "Three rectangles arranged horizontally" beats "show the architecture." Always quote labels literally.
 
-**Preview**: `docs/diagrams/diagram-02-architecture.png`
+**Preview**:
+
+<img src="../../../docs/diagrams/diagram-02-architecture.png" width="480" alt="diagram-02-architecture"/>

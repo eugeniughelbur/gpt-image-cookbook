@@ -16,7 +16,7 @@ Type-led design, posters, lockups, exact text rendering.
 
 **Notes**: One line on what makes this work.
 
-**Preview**: `docs/posters/poster-XX.png`
+**Preview**: <img src="../../../docs/posters/poster-XX.png" width="480" alt="poster-XX"/>
 ```
 
 ---
@@ -32,7 +32,9 @@ minimalist test poster on cream background, single bold word that reads exactly 
 
 **Notes**: Works at `--quality low` because the text is one word. Cream background + black sans = type-led baseline. Increase kerning explicitly or the model packs letters tight.
 
-**Preview**: `docs/posters/poster-01-typographic-cookbook.png`
+**Preview**:
+
+<img src="../../../docs/posters/poster-01-typographic-cookbook.png" width="480" alt="poster-01-typographic-cookbook"/>
 
 ---
 
@@ -47,7 +49,9 @@ Editorial poster: dramatic close-up of a steaming espresso cup on a wooden bar, 
 
 **Notes**: Two-word all-caps overlays are the safe ceiling for `--quality low`. Stating the overlay zone ("lower-third") gives the composition room; without it the text crashes into the subject. Film grain helps unify text with photo.
 
-**Preview**: `docs/posters/poster-02-photo-led-overlay.png`
+**Preview**:
+
+<img src="../../../docs/posters/poster-02-photo-led-overlay.png" width="480" alt="poster-02-photo-led-overlay"/>
 
 ---
 
@@ -62,7 +66,9 @@ Geometric Bauhaus-style poster: large red circle, two black diagonal lines cross
 
 **Notes**: Naming the movement ("Bauhaus") is a strong style anchor. Specify shape *count* and *position* — vague shape requests produce mush. "Generous negative space" prevents the model from filling every inch.
 
-**Preview**: `docs/posters/poster-03-geometric-bauhaus.png`
+**Preview**:
+
+<img src="../../../docs/posters/poster-03-geometric-bauhaus.png" width="480" alt="poster-03-geometric-bauhaus"/>
 
 ---
 

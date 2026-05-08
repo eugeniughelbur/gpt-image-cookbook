@@ -17,7 +17,9 @@ Editorial portrait photography, woman with dark wavy hair seated against warm ne
 
 **Notes**: Naming the focal length and aperture (`85mm at f/1.8`) is a reliable shortcut for the editorial portrait look. State light direction explicitly — "from camera-left" beats "good lighting."
 
-**Preview**: `docs/photography/photo-01-editorial-portrait.png`
+**Preview**:
+
+<img src="../../../docs/photography/photo-01-editorial-portrait.png" width="480" alt="photo-01-editorial-portrait"/>
 
 ---
 
@@ -32,4 +34,6 @@ Product photography, single ceramic coffee mug centered on dark oak wood surface
 
 **Notes**: "Top-down 90-degree camera angle" forces the orthographic flat-lay look (camera prefers oblique by default). Naming the shadow direction makes the lighting believable.
 
-**Preview**: `docs/photography/photo-02-product-mug.png`
+**Preview**:
+
+<img src="../../../docs/photography/photo-02-product-mug.png" width="480" alt="photo-02-product-mug"/>

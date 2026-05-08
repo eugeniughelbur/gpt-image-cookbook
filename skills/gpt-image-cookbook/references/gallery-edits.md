@@ -26,7 +26,9 @@ gic -p "Edit the reference image. PRESERVE: the cream background, the layout, th
 
 **Notes**: Edits must lead with an explicit `PRESERVE:` clause and an explicit `CHANGE:` clause. Without `PRESERVE:` the model redraws too much. Without `CHANGE:` it drifts. Quote the literal old word and the literal new word — not "swap the title" but "replace 'cookbook' with 'recipes'."
 
-**Preview**: `docs/edits/edit-01-typographic-text-swap.png`
+**Preview**:
+
+<img src="../../../docs/edits/edit-01-typographic-text-swap.png" width="480" alt="edit-01-typographic-text-swap"/>
 
 ---
 

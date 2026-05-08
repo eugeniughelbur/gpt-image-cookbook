@@ -17,7 +17,9 @@ Flat editorial illustration, person seated cross-legged on a green couch reading
 
 **Notes**: Specify the palette by name (`olive, cream, terracotta, charcoal`) — vague color requests give muddy results. "No harsh outlines" prevents the model from adding cartoon contours.
 
-**Preview**: `docs/illustration/illo-01-reading-flat.png`
+**Preview**:
+
+<img src="../../../docs/illustration/illo-01-reading-flat.png" width="480" alt="illo-01-reading-flat"/>
 
 ---
 
@@ -32,4 +34,6 @@ Single-line continuous-line illustration of a coffee plant branch with two leave
 
 **Notes**: "Continuous-line" + "consistent stroke weight" + explicit "no shading, no fill" together push the model into the minimalist line look. Without all three it adds texture or breaks the line.
 
-**Preview**: `docs/illustration/illo-02-line-coffee.png`
+**Preview**:
+
+<img src="../../../docs/illustration/illo-02-line-coffee.png" width="480" alt="illo-02-line-coffee"/>

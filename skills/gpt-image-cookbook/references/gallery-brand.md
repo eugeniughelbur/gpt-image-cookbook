@@ -17,7 +17,9 @@ Logo design exploration sheet on cream paper background, abstract geometric mark
 
 **Notes**: Asking for "variations arranged in a row" gives a portfolio-style explore sheet. Specify mark COUNT (three) and what each mark conceptually represents. Bump to `--quality high` if exact wordmark text matters.
 
-**Preview**: `docs/brand/brand-01-logo-exploration.png`
+**Preview**:
+
+<img src="../../../docs/brand/brand-01-logo-exploration.png" width="480" alt="brand-01-logo-exploration"/>
 
 ---
 
@@ -32,4 +34,6 @@ Brand identity moodboard layout on cream background, organized grid: top-left re
 
 **Notes**: Moodboards need explicit grid layout ("top-left, top-right, bottom-left, bottom-right") with labels for each quadrant. Naming the four swatches by color name pins the palette.
 
-**Preview**: `docs/brand/brand-02-moodboard.png`
+**Preview**:
+
+<img src="../../../docs/brand/brand-02-moodboard.png" width="480" alt="brand-02-moodboard"/>

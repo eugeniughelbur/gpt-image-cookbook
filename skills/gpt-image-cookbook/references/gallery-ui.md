@@ -17,7 +17,9 @@ iOS mobile app onboarding screen, dark mode, centered illustration of a paper ai
 
 **Notes**: Pinning every label in quotes is the trick — without it the model invents copy. State the platform ("iOS") explicitly so the chrome looks right.
 
-**Preview**: `docs/ui/ui-01-onboarding-dark.png`
+**Preview**:
+
+<img src="../../../docs/ui/ui-01-onboarding-dark.png" width="480" alt="ui-01-onboarding-dark"/>
 
 ---
 
@@ -32,4 +34,6 @@ SaaS analytics dashboard, web app, light mode, three-column layout. Left sidebar
 
 **Notes**: Listing every nav item by literal name keeps the model from inventing labels. Specify the chart type and what it shows — "line chart titled 'Revenue'" beats "a chart showing growth."
 
-**Preview**: `docs/ui/ui-02-saas-dashboard-light.png`
+**Preview**:
+
+<img src="../../../docs/ui/ui-02-saas-dashboard-light.png" width="480" alt="ui-02-saas-dashboard-light"/>
