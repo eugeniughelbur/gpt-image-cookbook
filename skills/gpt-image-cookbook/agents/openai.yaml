@@ -1,0 +1,19 @@
+name: gpt-image-cookbook
+description: >
+  Multi-provider image generation cookbook. Searches the bundled prompt gallery,
+  loads provider/craft references, and calls the `gic` CLI for OpenAI, Google
+  Imagen, Flux, and other image providers.
+entrypoint: skills/gpt-image-cookbook/SKILL.md
+runtime:
+  bins:
+    any:
+      - gic
+      - uv
+      - uvx
+  env:
+    primary: OPENAI_API_KEY
+    optional:
+      - GOOGLE_API_KEY
+      - FAL_KEY
+      - REPLICATE_API_TOKEN
+homepage: https://github.com/eugeniughelbur/gpt-image-cookbook

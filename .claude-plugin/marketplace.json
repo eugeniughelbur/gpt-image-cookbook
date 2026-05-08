@@ -1,0 +1,23 @@
+{
+  "name": "eugeniughelbur-skills",
+  "owner": {
+    "name": "Eugeniu Ghelbur",
+    "url": "https://github.com/eugeniughelbur"
+  },
+  "plugins": [
+    {
+      "name": "gpt-image-cookbook",
+      "source": "./",
+      "description": "Multi-provider image generation cookbook — gallery-first prompt patterns, reference-image edits, and a packaged CLI (`gic`) wrapping OpenAI, Google Imagen, Flux, and more. Guides agents to search references, confer when useful, then call the provider.",
+      "homepage": "https://github.com/eugeniughelbur/gpt-image-cookbook",
+      "keywords": [
+        "image-generation",
+        "openai",
+        "imagen",
+        "flux",
+        "prompt-library",
+        "agent-skill"
+      ]
+    }
+  ]
+}
