@@ -26,6 +26,16 @@ Per-provider semantics, model defaults, and capability notes. Loaded when the ag
 - Inpaint: supported on Vertex AI via the imagegeneration model.
 - Multi-reference: limited; check the specific model variant.
 
+## atlascloud
+
+- Default models: `bytedance/seedream-v5.0-lite` for generation and `bytedance/seedream-v5.0-lite/edit` when references are supplied.
+- Env var: `ATLASCLOUD_API_KEY`; optional media API override: `ATLASCLOUD_MEDIA_API_BASE`.
+- Flow: one asynchronous generation POST followed by bounded prediction GET polling. The billable POST is never retried automatically.
+- Sizes: named CLI sizes and literal `WxH` values map to the closest supported Seedream preset.
+- Formats: PNG and JPEG.
+- Multi-reference: up to 14 local images, encoded as data URIs.
+- Not supported: masks, transparent background mode, WebP output, or `n > 1` in one call.
+
 ## flux (fal.ai or Replicate)
 
 - Default model: `flux-pro-1.1` (or `flux-schnell` for fast/cheap)
@@ -65,13 +75,13 @@ These move; trust the provider's pricing page over this file.
 
 ## Capability matrix
 
-| Capability | openai | imagen | flux |
-|---|---|---|---|
-| Text-to-image | ✓ | ✓ | ✓ |
-| Reference edit (img2img) | ✓ | partial | ✓ |
-| Inpaint (mask) | ✓ | ✓ (Vertex) | ✓ (flux-fill) |
-| Multi-reference | ✓ | partial | partial |
-| Transparent background | ✓ | — | — |
-| Exact text rendering | strong | medium | weak |
-| Photorealism | strong | strongest | strong |
-| Speed (low quality) | medium | fast | fastest |
+| Capability | openai | atlascloud | imagen | flux |
+|---|---|---|---|---|
+| Text-to-image | ✓ | ✓ | ✓ | ✓ |
+| Reference edit (img2img) | ✓ | ✓ | partial | ✓ |
+| Inpaint (mask) | ✓ | — | ✓ (Vertex) | ✓ (flux-fill) |
+| Multi-reference | ✓ | ✓ | partial | partial |
+| Transparent background | ✓ | — | — | — |
+| Exact text rendering | strong | strong | medium | weak |
+| Photorealism | strong | strong | strongest | strong |
+| Speed (low quality) | medium | medium | fast | fastest |

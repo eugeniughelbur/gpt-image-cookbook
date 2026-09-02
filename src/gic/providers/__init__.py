@@ -2,12 +2,14 @@
 
 from __future__ import annotations
 
+from .atlascloud_provider import AtlasCloudProvider
 from .base import GenerateRequest, Provider, ProviderError
-from .openai_provider import OpenAIProvider
-from .imagen_provider import ImagenProvider
 from .flux_provider import FluxProvider
+from .imagen_provider import ImagenProvider
+from .openai_provider import OpenAIProvider
 
 _REGISTRY: dict[str, type[Provider]] = {
+    "atlascloud": AtlasCloudProvider,
     "openai": OpenAIProvider,
     "imagen": ImagenProvider,
     "flux": FluxProvider,

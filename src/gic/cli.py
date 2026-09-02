@@ -33,7 +33,7 @@ def _build_parser() -> argparse.ArgumentParser:
     p.add_argument(
         "--provider",
         default=None,
-        help="provider: openai (default), imagen, flux. Falls back to GIC_DEFAULT_PROVIDER env.",
+        help="provider: openai (default), atlascloud, imagen, flux. Falls back to GIC_DEFAULT_PROVIDER env.",
     )
     p.add_argument("--model", help="override the provider's default model")
     p.add_argument(

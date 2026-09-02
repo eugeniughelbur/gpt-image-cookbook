@@ -1,20 +1,20 @@
 <p align="center">
-  <a href="https://github.com/eugeniughelbur/gpt-image-cookbook"><img src="docs/assets/hero.png" alt="gpt-image-cookbook — AI image recipes for OpenAI, Imagen, Flux" width="100%"/></a>
+  <a href="https://github.com/eugeniughelbur/gpt-image-cookbook"><img src="docs/assets/hero.png" alt="gpt-image-cookbook — multi-provider AI image recipes" width="100%"/></a>
 </p>
 
 <h1 align="center">gpt-image-cookbook</h1>
 
-<p align="center"><em>Multi-provider AI image generation cookbook — prompt gallery, agentic skill, and CLI for OpenAI gpt-image-2, Google Imagen, Flux, and more.</em></p>
+<p align="center"><em>Multi-provider AI image generation cookbook — prompt gallery, agentic skill, and CLI for OpenAI, Atlas Cloud, Google Imagen, Flux, and more.</em></p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License: MIT"/>
   <img src="https://img.shields.io/badge/python-%E2%89%A53.11-blue.svg" alt="Python ≥ 3.11"/>
-  <img src="https://img.shields.io/badge/providers-openai%20%7C%20imagen%20%7C%20flux-purple.svg" alt="Providers"/>
+  <img src="https://img.shields.io/badge/providers-openai%20%7C%20atlascloud%20%7C%20imagen%20%7C%20flux-purple.svg" alt="Providers"/>
 </p>
 
 ---
 
-**gpt-image-cookbook** is an open-source multi-provider AI image generation toolkit that bundles a curated prompt gallery, an agentic skill (`SKILL.md` runbook for Claude Code, Codex, OpenClaw, and Hermes), and a Python CLI (`gic`) into one repository. It supports **OpenAI gpt-image-2**, **Google Imagen**, and **Flux** (fal.ai / Replicate) under a single interface for text-to-image generation, reference-image editing, inpainting, and multi-reference workflows.
+**gpt-image-cookbook** is an open-source multi-provider AI image generation toolkit that bundles a curated prompt gallery, an agentic skill (`SKILL.md` runbook for Claude Code, Codex, OpenClaw, and Hermes), and a Python CLI (`gic`) into one repository. It supports **OpenAI gpt-image-2**, **Atlas Cloud**, **Google Imagen**, and **Flux** (fal.ai / Replicate) under a single interface for text-to-image generation, reference-image editing, inpainting, and multi-reference workflows.
 
 If you build with AI image models, this gives you copy-paste prompts that work, a CLI that handles auth and edits, and an agent runbook that wires it all together.
 
@@ -26,7 +26,7 @@ Three things bundled together:
 
 1. **A curated prompt gallery** — copy-paste prompts organized by category (posters, UI mockups, photography, diagrams, brand systems, edit/inpaint workflows) that produce reliable results across providers.
 2. **An agentic skill** — `SKILL.md` runbook for Claude Code, Codex, OpenClaw, Hermes, and other skill-capable agent runtimes. Tells the agent how to search the gallery, refine the prompt, and call the CLI without writing one-off scripts.
-3. **A CLI (`gic`)** — one command, multiple providers. Switch between OpenAI `gpt-image-2`, Google Imagen, and Flux with a single `--provider` flag.
+3. **A CLI (`gic`)** — one command, multiple providers. Switch between OpenAI `gpt-image-2`, Atlas Cloud, Google Imagen, and Flux with a single `--provider` flag.
 
 ---
 
@@ -81,6 +81,7 @@ Set at least one provider key:
 
 ```bash
 export OPENAI_API_KEY=sk-...        # for openai (default)
+export ATLASCLOUD_API_KEY=...       # for atlascloud
 export GOOGLE_API_KEY=...           # for imagen
 export FAL_KEY=...                  # for flux
 ```
@@ -103,6 +104,9 @@ gic -p "Replace the masked area with a coffee cup" -i ref.png -m mask.png
 
 # Switch provider
 gic -p "Photoreal product shot of a ceramic mug on oak" --provider imagen --quality high
+
+# Atlas Cloud (asynchronous submit + prediction polling)
+gic -p "Editorial product photo on a white studio background" --provider atlascloud --size landscape
 ```
 
 Outputs land in `./generated/<timestamp>-<slug>.png` unless you pass `-f`.
@@ -150,7 +154,7 @@ docs/                  # gallery thumbnails (added as you build entries)
 | `-f, --file` | path | output path; auto-named if omitted |
 | `-i, --image` | repeatable path | reference image; switches to edits endpoint |
 | `-m, --mask` | PNG path | alpha mask for inpaint; requires `-i` |
-| `--provider` | `openai`, `imagen`, `flux` | provider router |
+| `--provider` | `openai`, `atlascloud`, `imagen`, `flux` | provider router |
 | `--model` | string | override the provider's default model |
 | `--size` | `1k`, `2k`, `4k`, `portrait`, `landscape`, `square`, `wide`, `tall`, or `WxH` | canvas size |
 | `--quality` | `low`, `medium`, `high`, `auto` | cost/quality dial |
@@ -182,11 +186,11 @@ The provider abstraction lives in `src/gic/providers/`. Each provider implements
 
 ### What is gpt-image-cookbook?
 
-gpt-image-cookbook is an open-source toolkit for AI image generation that bundles three things in one repository: a curated **prompt gallery** (copy-paste prompts that work), an **agentic skill** (`SKILL.md` runbook for Claude Code, Codex, OpenClaw, and Hermes agent runtimes), and a **Python CLI** (`gic`) wrapping OpenAI gpt-image-2, Google Imagen, and Flux under one interface.
+gpt-image-cookbook is an open-source toolkit for AI image generation that bundles three things in one repository: a curated **prompt gallery** (copy-paste prompts that work), an **agentic skill** (`SKILL.md` runbook for Claude Code, Codex, OpenClaw, and Hermes agent runtimes), and a **Python CLI** (`gic`) wrapping OpenAI gpt-image-2, Atlas Cloud, Google Imagen, and Flux under one interface.
 
 ### Which AI image models does it support?
 
-OpenAI **gpt-image-2** is fully implemented for text-to-image, reference-image edits, inpainting (with PNG alpha mask), and multi-reference workflows. **Google Imagen** (imagen-4) and **Flux** (flux-pro-1.1, flux-schnell via fal.ai or Replicate) have provider stubs ready — the abstraction is in place, implementations land progressively.
+OpenAI **gpt-image-2** is fully implemented for text-to-image, reference-image edits, inpainting (with PNG alpha mask), and multi-reference workflows. **Atlas Cloud** is implemented for Seedream text-to-image and multi-reference edits through its asynchronous API. **Google Imagen** (imagen-4) and **Flux** (flux-pro-1.1, flux-schnell via fal.ai or Replicate) have provider stubs ready — the abstraction is in place, implementations land progressively.
 
 ### How do I install it?
 
@@ -198,11 +202,11 @@ Run `/plugin install eugeniughelbur/gpt-image-cookbook` inside Claude Code. The 
 
 ### What's the difference between this and just calling the OpenAI API directly?
 
-Three things you don't get from the raw API: a **gallery of working prompts** organized by category, a **multi-provider abstraction** so you can switch between OpenAI / Imagen / Flux without rewriting code, and an **agent runbook** that lets a Claude Code or Codex agent use the gallery + CLI without you writing one-off scripts.
+Three things you don't get from the raw API: a **gallery of working prompts** organized by category, a **multi-provider abstraction** so you can switch between OpenAI / Atlas Cloud / Imagen / Flux without rewriting code, and an **agent runbook** that lets a Claude Code or Codex agent use the gallery + CLI without you writing one-off scripts.
 
 ### Does it cost money to use?
 
-Yes — calls go to OpenAI / Google / fal.ai / Replicate and bill the user's account. The CLI itself is free and open-source (MIT). The cookbook recommends drafting at `--quality low` first (~$0.01 per image on gpt-image-2) and only moving to `--quality high` (~$0.17 per image) when the prompt is locked.
+Yes — calls go to OpenAI / Atlas Cloud / Google / fal.ai / Replicate and bill the user's account. The CLI itself is free and open-source (MIT). The cookbook recommends drafting at `--quality low` first (~$0.01 per image on gpt-image-2) and only moving to `--quality high` (~$0.17 per image) when the prompt is locked.
 
 ### Where are prompt API keys stored?
 
