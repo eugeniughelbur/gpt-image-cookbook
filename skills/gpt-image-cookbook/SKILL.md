@@ -12,7 +12,7 @@ Agent runbook for multi-provider AI image generation and editing. Use the prompt
 ## Operating loop
 
 1. **Classify the request**: `generate`, `edit`, `inpaint`, or `multi-reference`. Identify asset type, exact text to render, aspect ratio, references, safety constraints, and budget/quality tier.
-2. **Pick a provider**: default to `openai` (`gpt-image-2`). Switch to `imagen` for Google-native quality on photoreal scenes, or `flux` for fast/cheap drafts and stylized art. The user's explicit request always wins.
+2. **Pick a provider**: default to `openai` (`gpt-image-2`). Use `atlascloud` when explicitly requested, `imagen` for Google-native quality on photoreal scenes, or `flux` for fast/cheap drafts and stylized art. The user's explicit request always wins.
 3. **Search references first**: open `references/gallery.md` (the routing index). Load the closest `references/gallery-<category>.md` file(s). Read actual `**Prompt**` text before choosing a pattern — never guess from category name alone.
 4. **Refine with craft**: load `references/craft.md` for dense text, diagrams, UI mockups, data visualization, multi-panel layouts, or when the gallery has no close match.
 5. **Confer when useful**: before costly, ambiguous, or high-polish calls, present 1–3 matched directions plus planned size/quality/provider; ask at most one concise question. Skip the discussion for precise "generate now" requests.
@@ -28,7 +28,7 @@ Preferred call order:
 
 ```bash
 # Existing CLI on PATH
-gic -p "PROMPT" [-f OUT] [-i REF...] [-m MASK] [--provider openai|imagen|flux] [options]
+gic -p "PROMPT" [-f OUT] [-i REF...] [-m MASK] [--provider openai|atlascloud|imagen|flux] [options]
 
 # Repo-local launcher (when the skill folder is bundled with the runtime)
 uv run "$SKILL_DIR/scripts/generate.py" -p "PROMPT" [options]
@@ -44,6 +44,7 @@ uvx --from git+https://github.com/eugeniughelbur/gpt-image-cookbook gic -p "PROM
 | Provider | Model default | When to use |
 |---|---|---|
 | `openai` | `gpt-image-2` | Default. Strong on text rendering, posters, UI mockups, Chinese typography, research figures. |
+| `atlascloud` | `bytedance/seedream-v5.0-lite` | Optional Atlas Cloud route for text-to-image or multi-reference edits. Uses `ATLASCLOUD_API_KEY`. |
 | `imagen` | `imagen-4` | Photoreal scenes, product shots, faces, lighting realism. Google-account billing. |
 | `flux` | `flux-pro-1.1` | Fast/cheap drafts, stylized art, broad style exploration. fal.ai or Replicate billing. |
 
@@ -65,7 +66,7 @@ The CLI resolves the provider from the `--provider` flag, then `GIC_DEFAULT_PROV
 | `-f, --file` | path | Output path; auto-named if omitted |
 | `-i, --image` | repeatable path | Use the edits endpoint; supports multiple references |
 | `-m, --mask` | PNG path | Inpaint with alpha mask; requires `-i` |
-| `--provider` | `openai`, `imagen`, `flux` | Provider router |
+| `--provider` | `openai`, `atlascloud`, `imagen`, `flux` | Provider router |
 | `--model` | string | Override the provider's default model |
 | `--size` | `1k`, `2k`, `4k`, `portrait`, `landscape`, `square`, `wide`, `tall`, or literal `WxH` | Canvas size |
 | `--quality` | `low`, `medium`, `high`, `auto` | Cost/quality dial (provider-mapped) |
